@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Home</h1>
+    <p>Welcome, <span id="user-name"></span></p>
+    <a href="about.html">About Us</a>
+    <button id="logout">Logout</button>
+
+    <script>
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) {
+        document.getElementById("user-name").textContent = user.username;
+      } else {
+        window.location.href = "/"; // Redirect to login page if not logged in
+      }
+
+      document.getElementById("logout").addEventListener("click", function () {
+        localStorage.removeItem("user");
+        window.location.href = "/"; // Redirect to login page after logout
+      });
+    </script>
+  </body>
+</html>
